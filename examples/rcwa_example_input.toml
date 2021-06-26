@@ -1,0 +1,37 @@
+# Input file for rcwa.py. Define source, superstrate, substrate and as many layers as you want in between them. 
+[source]
+# wavelength is in free space
+wavelength = 2.0
+# theta and phi have usual definitions in spherical coordinates; in degrees
+theta = 0.00001
+phi = 0.00001
+# te and tm amplitudes are complex numbers - each list contains Re and Im parts
+te_amplitude = [1.0, 0.0]
+tm_amplitude = [0.0, 0.0]
+
+[superstrate]
+# epsilon is relative permittivity
+epsilon = 2.0
+
+[periodicity]
+# periodicity; same for all layers; same units as wavelength
+period_x = 1.75
+period_y = 1.5
+# Truncation of Fourier Series for the structure; harmonics_x = max harmonic in x direction;
+# total # of harmonics in x is 2*harmonics_x + 1
+harmonics_x = 3
+harmonics_y = 3
+
+[[layer]]
+# For inhomogeneous layer epsilon is defined by providing a path to .csv file containing epsilon map
+epsilon = 'rcwa_example_epsilon.csv'
+# thickness is defined in the same units as wavelength
+thickness = 0.5
+
+[[layer]] 
+# Epsilon for homogeneous layer is defined by a single float.
+epsilon = 6.0
+thickness = 0.3
+
+[substrate]
+epsilon = 9.0
